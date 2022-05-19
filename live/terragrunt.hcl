@@ -1,4 +1,3 @@
-// path_relative_to_include of dir A with working A/B/C/D is return B/C/D
 generate "backend" {
   path      = "backend.tf"
   if_exists = "overwrite_terragrunt"

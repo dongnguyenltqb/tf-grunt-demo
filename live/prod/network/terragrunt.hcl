@@ -1,10 +1,5 @@
 terraform {
-  source = "../../..//code/components/network"
-}
-
-// load env for each component
-include "environment" {
-  path = find_in_parent_folders()
+  source = "git::git@github.com:dongnguyenltqb/tf-grunt-demo.git//code/components/network?ref=v0.0.1"
 }
 
 include "root" {
