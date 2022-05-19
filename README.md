@@ -17,13 +17,10 @@
 - /vars
   - dev.tfvars
 
-2. Forder struct description
-   2.1 code
-
-3. Command
+2. Command
 
 - to spin up infra for an evirontment like dev or staging
   ```shell
   cd live/ENV
-  tg run-all apply -var-file=../../../vars/ENV.tfvars
+  tg run-all apply -var-file=$PATH_TO_VAR_FILE
   ```
