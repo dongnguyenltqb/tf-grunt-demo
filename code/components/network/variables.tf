@@ -2,6 +2,8 @@ variable "cidr_block" {
   type     = string
   nullable = false
 }
-variable "env" {
-  type = string
+
+variable "subnet_cidr" {
+  type     = string
+  nullable = false
 }

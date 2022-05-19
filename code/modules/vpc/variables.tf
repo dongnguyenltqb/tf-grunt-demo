@@ -3,6 +3,7 @@ variable "cidr_block" {
   nullable = false
 }
 
-variable "tags" {
-  type = map(any)
+variable "subnet_cidr" {
+  type     = string
+  nullable = false
 }
