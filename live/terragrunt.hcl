@@ -13,7 +13,7 @@ terraform {
 EOF
 }
 
-generate "provider" {
+generate "" {
   path = "provider.tf"
   if_exists = "overwrite_terragrunt"
   contents = <<EOF
