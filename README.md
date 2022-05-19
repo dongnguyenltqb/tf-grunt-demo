@@ -17,6 +17,7 @@
     - /ec2
 - /vars
   - dev.tfvars
+  - prod.tfvars
 
 2. Command
 
