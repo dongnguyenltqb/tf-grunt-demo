@@ -14,6 +14,7 @@
     - /ec2
   - /prod
     - /network
+    - /ec2
 - /vars
   - dev.tfvars
 
