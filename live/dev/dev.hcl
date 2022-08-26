@@ -1,0 +1,33 @@
+# local variable store common tag
+generate "locals" {
+  path      = "locals.tf"
+  if_exists = "skip"
+  contents = <<EOF
+  locals {
+    tags = {
+      Environment = "staging"
+    }
+  }
+EOF
+}
+
+
+# default provider and region setting
+generate "provider" {
+  path      = "provider.tf"
+  if_exists = "skip"
+  contents = <<EOF
+  terraform {
+    required_providers {
+      aws = {
+        source  = "hashicorp/aws"
+        version = "~> 4.0"
+      }
+    }
+  }
+
+  provider "aws" {
+    region = "us-east-1"
+  }
+EOF
+}
