@@ -31,7 +31,8 @@ variable "use_eip" {
 
 variable "allow_rules" {
   type = list(object({
-    port                     = string
+    from_port                = string
+    to_port                  = string
     cidr_block               = list(string)
     source_security_group_id = string
   }))

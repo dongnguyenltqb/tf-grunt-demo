@@ -13,16 +13,22 @@ terraform {
 dependency "network" {
   config_path = "${get_terragrunt_dir()}/../network"
   mock_outputs = {
-    vpc_cidr           = "1.2.3.4/5"
     vpc_id             = "vpc_id"
     vpc_public_subnets = ["a", "b", "c"]
+  }
+}
+
+dependency "master" {
+  config_path = "${get_terragrunt_dir()}/../ec2-master"
+  mock_outputs = {
+    security_group_id = "sg"
   }
 }
 
 inputs = {
   vpc_id    = dependency.network.outputs.vpc_id
   subnet_id = dependency.network.outputs.vpc_public_subnets[0]
-  name      = "k8sMasterNode"
+  name      = "k8sWorkerNode"
   use_eip   = true
   allow_rules = [
     {
@@ -46,12 +52,12 @@ inputs = {
     {
       from_port                = "0"
       to_port                  = "65535"
-      cidr_block               = [dependency.network.outputs.vpc_cidr]
-      source_security_group_id = null
-    },
+      cidr_block               = null
+      source_security_group_id = dependency.master.outputs.security_group_id
+    }
   ]
-  key_name   = "msi"
-  public_key = file("../../../ssh-keys/eks.pub")
+  key_name   = "msiworker"
+  public_key = file("../../../ssh-keys/worker.pub")
   tags = {
     Component = "k8sCluster"
   }

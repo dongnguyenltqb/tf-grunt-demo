@@ -48,8 +48,8 @@ resource "aws_security_group" "this" {
 resource "aws_security_group_rule" "this" {
   count                    = length(var.allow_rules)
   type                     = "ingress"
-  from_port                = var.allow_rules[count.index].port
-  to_port                  = var.allow_rules[count.index].port
+  from_port                = var.allow_rules[count.index].from_port
+  to_port                  = var.allow_rules[count.index].to_port
   protocol                 = "tcp"
   cidr_blocks              = var.allow_rules[count.index].cidr_block
   source_security_group_id = var.allow_rules[count.index].source_security_group_id
