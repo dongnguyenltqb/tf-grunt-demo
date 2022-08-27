@@ -33,6 +33,7 @@ variable "allow_rules" {
   type = list(object({
     from_port                = string
     to_port                  = string
+    protocol                 = string
     cidr_block               = list(string)
     source_security_group_id = string
   }))

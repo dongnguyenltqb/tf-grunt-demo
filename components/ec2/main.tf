@@ -50,7 +50,7 @@ resource "aws_security_group_rule" "this" {
   type                     = "ingress"
   from_port                = var.allow_rules[count.index].from_port
   to_port                  = var.allow_rules[count.index].to_port
-  protocol                 = "tcp"
+  protocol                 = var.allow_rules[count.index].protocol
   cidr_blocks              = var.allow_rules[count.index].cidr_block
   source_security_group_id = var.allow_rules[count.index].source_security_group_id
   security_group_id        = aws_security_group.this.id

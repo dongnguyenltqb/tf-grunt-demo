@@ -34,24 +34,14 @@ inputs = {
     {
       from_port                = "22"
       to_port                  = "22"
-      cidr_block               = ["0.0.0.0/0"]
-      source_security_group_id = null
-    },
-    {
-      from_port                = "80"
-      to_port                  = "80"
-      cidr_block               = ["0.0.0.0/0"]
-      source_security_group_id = null
-    },
-    {
-      from_port                = "443"
-      to_port                  = "443"
+      protocol                 = "tcp"
       cidr_block               = ["0.0.0.0/0"]
       source_security_group_id = null
     },
     {
       from_port                = "0"
       to_port                  = "65535"
+      protocol                 = "-1"
       cidr_block               = null
       source_security_group_id = dependency.master.outputs.security_group_id
     }
