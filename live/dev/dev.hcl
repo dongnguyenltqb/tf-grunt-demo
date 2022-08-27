@@ -2,10 +2,10 @@
 generate "locals" {
   path      = "locals.tf"
   if_exists = "skip"
-  contents = <<EOF
+  contents  = <<EOF
   locals {
     tags = {
-      Environment = "staging"
+      Environment = "dev"
     }
   }
 EOF
@@ -16,7 +16,7 @@ EOF
 generate "provider" {
   path      = "provider.tf"
   if_exists = "skip"
-  contents = <<EOF
+  contents  = <<EOF
   terraform {
     required_providers {
       aws = {
@@ -27,7 +27,7 @@ generate "provider" {
   }
 
   provider "aws" {
-    region = "us-east-1"
+    region = "ap-southeast-1"
   }
 EOF
 }
