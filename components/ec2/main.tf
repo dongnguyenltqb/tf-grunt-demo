@@ -10,7 +10,7 @@ resource "aws_instance" "this" {
   ami                         = var.ami != null ? var.ami : data.aws_ami.amazon-linux-2.id
   instance_type               = var.instance_type
   subnet_id                   = var.subnet_id
-  vpc_security_group_ids      = [aws_security_group.this.id]
+  vpc_security_group_ids      = concat([aws_security_group.this.id], var.additional_security_group_ids)
   iam_instance_profile        = var.iam_instance_profile
   associate_public_ip_address = true
   key_name                    = aws_key_pair.this.key_name

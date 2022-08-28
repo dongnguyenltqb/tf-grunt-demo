@@ -29,6 +29,11 @@ variable "use_eip" {
   default = false
 }
 
+
+variable "additional_security_group_ids" {
+  type    = list(string)
+  default = []
+}
 variable "allow_rules" {
   type = list(object({
     from_port                = string
